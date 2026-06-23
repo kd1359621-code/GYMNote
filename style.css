@@ -40,9 +40,9 @@ button {
 #home {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   gap: 20px;
-  height: 100%;
+  justify-content: flex-start;
+
 }
 
 .menu-btn {
@@ -469,11 +469,11 @@ select {
 ========================== */
 
 .logo {
-  font-size: 42px !important; 
+  font-size: 42px !important;
   font-weight: 700;
   text-align: center;
-  margin-top: auto;          
-  margin-bottom: 20px;          
+  margin-top: 40px;
+  margin-bottom: 10px;
 }
 
 .gym {
@@ -501,5 +501,5 @@ select {
 #home::after {
   content: "";
   margin-bottom: auto;
-  
+
 }
