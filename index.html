@@ -174,42 +174,36 @@
 
 
 
-        <!-- 履歴画面 -->
         <div id="archive" class="screen hidden">
 
-            <h1>履歴確認</h1>
+            <div class="archive-top">
+                <button id="back">←</button>
+                <h1>履歴確認</h1>
+                <div style="width: 44px;"></div>
+            </div>
+
+            
 
             <div id="archiveControls">
-
                 <select id="sortType">
-
-                    <option value="new">
-                        新しい順
-                    </option>
-
-                    <option value="old">
-                        古い順
-                    </option>
-
+                    <option value="new">新しい順</option>
+                    <option value="old">古い順</option>
                 </select>
 
                 <select id="categoryFilter">
-
-                    <option value="all">
-                        すべての部位
-                    </option>
-
+                    <option value="all">すべての部位</option>
                 </select>
-
             </div>
-
-            <button id="back">
-                戻る
-            </button>
 
             <ul id="ArchiveList"></ul>
 
         </div>
+
+
+
+        <ul id="ArchiveList"></ul>
+
+    </div>
 
     </div>
 
