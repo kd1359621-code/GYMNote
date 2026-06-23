@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <title>仮ジム管理</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- ホーム画面 -->
+        <div id="home" class="screen">
+
+            <h1 class="logo">
+                <span class="gym">GYM</span><span class="note">Note</span>
+            </h1>
+
+            <button id="goSetCounter" class="menu-btn">
+
+                セットカウンター
+
+            </button>
+
+            <button id="goArchive" class="menu-btn">
+
+                履歴確認
+
+            </button>
+
+
+            <div class="bottom-menu">
+
+                <button class="sub-btn">
+                    機能1
+                </button>
+
+                <button class="sub-btn">
+                    機能2
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+
+        <!-- 部位選択画面 -->
+        <div id="categoryScreen" class="screen hidden">
+
+            <h1>部位を選択</h1>
+            <div id="categoryList"></div>
+
+
+            <input type="text" id="newCategory" placeholder="部位を追加">
+
+            <button id="addCategory">
+                部位追加
+            </button>
+
+
+
+        </div>
+
+
+
+
+
+        <!-- セットカウンター -->
+        <div id="counter" class="screen hidden">
+
+            <div id="topBar">
+
+                <button id="Saveback">
+                    ←
+                </button>
+
+                <input type="date" id="date">
+
+            </div>
+
+            <h1 id="counterTitle">
+                セットカウンター
+            </h1>
+
+            <select id="exerciseSelect">
+            </select>
+
+            <div class="add-area">
+
+                <input type="text" id="newExercise" placeholder="種目を追加">
+
+                <button id="addExercise">
+                    追加
+                </button>
+
+            </div>
+
+
+
+            <!-- 中央セット数 -->
+            <div id="countCircle">
+
+                <p id="count">0</p>
+
+            </div>
+
+
+
+
+
+
+
+            <div class="bottom-info">
+
+                <div class="info-circle">
+
+                    <input type="number" id="weight" placeholder="0" min="0">
+
+                    <p>kg</p>
+
+                </div>
+
+                <div class="info-circle">
+
+                    <input type="number" id="reps" placeholder="0" min="0">
+
+                    <p>reps</p>
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+
+
+
+
+
+
+        <div id="restOverlay" class="hidden">
+
+            <div class="rest-content">
+
+                <div id="restTimer">01:30</div>
+
+                <div class="rest-buttons">
+                    <button id="minusRest">-30</button>
+                    <button id="plusRest">+30</button>
+                </div>
+                <button id="endRest">
+                    レスト終了
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+
+
+
+        <!-- 履歴画面 -->
+        <div id="archive" class="screen hidden">
+
+            <h1>履歴確認</h1>
+
+            <div id="archiveControls">
+
+                <select id="sortType">
+
+                    <option value="new">
+                        新しい順
+                    </option>
+
+                    <option value="old">
+                        古い順
+                    </option>
+
+                </select>
+
+                <select id="categoryFilter">
+
+                    <option value="all">
+                        すべての部位
+                    </option>
+
+                </select>
+
+            </div>
+
+            <button id="back">
+                戻る
+            </button>
+
+            <ul id="ArchiveList"></ul>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+
+
+
+</body>
+
+</html>

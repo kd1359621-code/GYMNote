@@ -1,0 +1,486 @@
+.hidden {
+  display: none !important;
+}
+
+body {
+  margin: 0;
+  background: #dcdcdc;
+
+  display: flex;
+  justify-content: center;
+
+  font-family: "Inter", sans-serif;
+}
+
+.app {
+  width: 390px;
+  min-height: 100vh;
+
+  background: white;
+}
+
+.hidden {
+  display: none;
+}
+
+/* 共通 */
+.screen {
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* ホーム画面 */
+#home {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.menu-btn {
+  height: 100px;
+
+  border-radius: 20px;
+  border: 2px solid black;
+
+  font-size: 24px;
+
+  background: white;
+}
+
+.add-area {
+  display: flex;
+  gap: 10px;
+}
+
+.add-area input {
+  flex: 1;
+  height: 40px;
+}
+
+/* セットカウンター */
+#counter {
+  text-align: center;
+}
+
+#topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 10px;
+}
+
+#exerciseSelect {
+  width: 100%;
+  height: 45px;
+
+  border-radius: 10px;
+
+  margin-bottom: 10px;
+}
+
+#countCircle {
+  width: 240px;
+  height: 240px;
+
+  border: 3px solid #00C853;
+  border-radius: 50%;
+
+  margin: 30px auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #1E1E1E;
+
+  box-shadow:
+    0 0 10px rgba(0, 200, 83, 0.3);
+}
+
+#count {
+  font-size: 120px;
+  font-weight: bold;
+
+  margin: 0;
+}
+
+.bottom-info {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+
+  margin-top: 20px;
+}
+
+.info-circle {
+  width: 110px;
+  height: 110px;
+
+  border: 2px solid black;
+  border-radius: 50%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.info-circle input {
+  width: 60px;
+
+  text-align: center;
+
+  font-size: 28px;
+
+  border: none;
+  outline: none;
+}
+
+.counter-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  margin-top: 30px;
+}
+
+.counter-buttons button {
+  height: 50px;
+
+  border-radius: 12px;
+  border: 2px solid black;
+
+  background: white;
+}
+
+/* 履歴画面 */
+#archiveControls {
+  display: flex;
+  gap: 10px;
+
+  margin-bottom: 20px;
+}
+
+#archiveControls select {
+  flex: 1;
+  height: 40px;
+}
+
+#ArchiveList {
+  padding: 0;
+}
+
+#ArchiveList li {
+  list-style: none;
+
+  border: 2px solid black;
+  border-radius: 12px;
+
+  padding: 12px;
+
+  margin-bottom: 12px;
+}
+
+#ArchiveList button {
+  margin-top: 10px;
+}
+
+#home {
+  display: flex;
+  flex-direction: column;
+
+  gap: 20px;
+
+  padding: 20px;
+}
+
+.home-title {
+  text-align: center;
+
+  margin-bottom: 20px;
+}
+
+.menu-btn {
+
+  height: 100px;
+
+  border-radius: 20px;
+  border: 2px solid black;
+
+  font-size: 24px;
+
+  background: white;
+}
+
+.bottom-menu {
+
+  display: flex;
+
+  gap: 20px;
+}
+
+.sub-btn {
+
+  flex: 1;
+
+  height: 100px;
+
+  border-radius: 20px;
+  border: 2px solid black;
+
+  font-size: 20px;
+
+  background: white;
+}
+
+
+#categoryList {
+  display: flex;
+  flex-direction: column;
+
+  gap: 15px;
+
+  height: 300px;
+  overflow-y: auto;
+
+  margin: 20px 0;
+}
+
+.category-card {
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: transparent;
+}
+
+.category-btn {
+  width: 100%;
+
+  height: 80px;
+
+  font-size: 32px;
+  font-weight: 700;
+
+  border-radius: 20px;
+
+  border: 1px solid #333;
+
+  background: #1A1A1A;
+
+  color: white;
+}
+
+#restTimer {
+
+  font-size: 96px;
+
+  font-weight: bold;
+
+  text-align: center;
+
+  margin: 60px 0;
+}
+
+
+.hidden {
+  display: none;
+}
+
+#restOverlay {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.95);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 9999;
+}
+
+.rest-content {
+  text-align: center;
+}
+
+#restTimer {
+  font-size: 5rem;
+  font-weight: bold;
+  color: white;
+}
+
+.rest-buttons {
+  margin-top: 40px;
+
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.rest-buttons button {
+  width: 100px;
+  height: 60px;
+  font-size: 1.5rem;
+}
+
+#restOverlay.hidden {
+  display: none;
+}
+
+#endRest {
+  margin-top: 30px;
+  width: 180px;
+  height: 60px;
+  font-size: 1.2rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================
+   ダークテーマ
+========================== */
+
+body {
+  background: #121212;
+  color: #ffffff;
+}
+
+.app {
+  background: #121212;
+}
+
+/* 共通ボタン */
+button {
+  background: #1E1E1E;
+  color: #ffffff;
+
+  border: 1px solid #333;
+
+  transition: 0.2s;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+/* 入力欄 */
+input,
+select {
+  background: #1E1E1E;
+  color: #ffffff;
+
+  border: 1px solid #333;
+}
+
+/* ホーム */
+.menu-btn,
+.sub-btn {
+  background: #1E1E1E;
+  color: white;
+
+  border: 1px solid #333;
+}
+
+
+
+/* セット数の円 */
+#countCircle {
+  border: 3px solid #00C853;
+
+  box-shadow:
+    0 0 10px rgba(0, 200, 83, 0.3);
+}
+
+/* セット数 */
+#count {
+  color: white;
+}
+
+/* 重量・レップ */
+.info-circle {
+  background: #1E1E1E;
+
+  border: 1px solid #333;
+}
+
+.info-circle input {
+  background: transparent;
+  color: white;
+}
+
+/* 履歴 */
+#ArchiveList li {
+  background: #1E1E1E;
+
+  border: 1px solid #333;
+}
+
+/* レストタイマー */
+#restTimer {
+  color: #00C853;
+
+  text-shadow:
+    0 0 10px rgba(0, 200, 83, 0.4);
+}
+
+/* レスト終了ボタンだけ緑 */
+#endRest {
+  background: #00C853;
+  color: white;
+
+  border: none;
+}
+
+/* 部位追加ボタン */
+#addCategory,
+#addExercise {
+  background: #00C853;
+  border: none;
+}
+
+
+/* ==========================
+   GYMNote ロゴ
+========================== */
+
+.logo {
+  text-align: center;
+
+  font-size: 42px;
+  font-weight: 700;
+
+  letter-spacing: 1px;
+
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.gym {
+  color: #ffffff;
+}
+
+.note {
+  color: #00C853;
+
+  text-shadow:
+    0 0 8px rgba(0, 200, 83, 0.5);
+}
