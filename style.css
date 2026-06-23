@@ -40,7 +40,7 @@ button {
 #home {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly; 
+  justify-content: center;
   gap: 20px;
   height: 100%;
 }
@@ -499,5 +499,7 @@ select {
 }
 
 #home::after {
-  content: none; 
+  content: "";
+  margin-bottom: auto;
+  
 }
