@@ -64,6 +64,7 @@ const endRest = document.getElementById("endRest");
 
 let setRecords = [];
 
+let longPressTriggered = false;
 
 const exerciseSelect = document.getElementById("exerciseSelect");
 let categories =

@@ -503,3 +503,10 @@ select {
   margin-bottom: auto;
 
 }
+
+
+#countCircle, #count {
+  -webkit-user-select: none;  
+  user-select: none;          
+  -webkit-touch-callout: none; 
+}
