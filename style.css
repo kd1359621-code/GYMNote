@@ -365,7 +365,13 @@ body {
 }
 
 .app {
+  width: 100%;
+  
+  max-width: 390px;
+  
+  min-height: 100dvh;
   background: #121212;
+  
 }
 
 /* 共通ボタン */
