@@ -490,3 +490,14 @@ select {
   text-shadow:
     0 0 8px rgba(0, 200, 83, 0.5);
 }
+
+
+
+#categoryScreen .add-area {
+  margin-bottom: 15px;
+}
+
+
+#categoryList {
+  margin-top: 0; 
+}
