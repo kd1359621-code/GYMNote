@@ -21,7 +21,10 @@ body {
 /* 共通 */
 .screen {
   padding: 20px;
-  height: calc(100% - 40px);
+
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   box-sizing: border-box;
 }
 
@@ -364,7 +367,8 @@ body {
 .app {
   width: 100%;
   max-width: 390px;
-  height: 100dvh;
+
+  min-height: 100dvh;
   background: #121212;
   display: flex;
   flex-direction: column;
@@ -465,14 +469,7 @@ select {
 ========================== */
 
 .logo {
-  text-align: center;
-
-  font-size: 42px;
-  font-weight: 700;
-
-  letter-spacing: 1px;
-
-  margin-top: 40px;
+  margin-top: auto;
   margin-bottom: 20px;
 }
 
@@ -500,5 +497,6 @@ select {
 
 #home::after {
   content: "";
-  height: 40px;          
+  margin-bottom: auto;
+  
 }
