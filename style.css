@@ -12,12 +12,7 @@ body {
   font-family: "Inter", sans-serif;
 }
 
-.app {
-  width: 390px;
-  min-height: 100vh;
 
-  background: white;
-}
 
 .hidden {
   display: none;
@@ -26,6 +21,8 @@ body {
 /* 共通 */
 .screen {
   padding: 20px;
+  height: calc(100% - 40px);
+  box-sizing: border-box;
 }
 
 h1 {
@@ -40,7 +37,9 @@ button {
 #home {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 20px;
+  height: 100%;
 }
 
 .menu-btn {
@@ -245,13 +244,11 @@ button {
 #categoryList {
   display: flex;
   flex-direction: column;
-
   gap: 15px;
-
-  height: 300px;
+  flex: 1;
   overflow-y: auto;
-
-  margin: 20px 0;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 .category-card {
@@ -366,12 +363,11 @@ body {
 
 .app {
   width: 100%;
-  
   max-width: 390px;
-  
-  min-height: 100dvh;
+  height: 100dvh;
   background: #121212;
-  
+  display: flex;
+  flex-direction: column;
 }
 
 /* 共通ボタン */
@@ -499,5 +495,5 @@ select {
 
 
 #categoryList {
-  margin-top: 0; 
+  margin-top: 0;
 }
