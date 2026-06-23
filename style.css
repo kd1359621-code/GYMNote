@@ -472,8 +472,8 @@ select {
 
   letter-spacing: 1px;
 
-  margin-top: 20px;
-  margin-bottom: 30px;
+  margin-top: 40px;
+  margin-bottom: 20px;
 }
 
 .gym {
@@ -496,4 +496,9 @@ select {
 
 #categoryList {
   margin-top: 0;
+}
+
+#home::after {
+  content: "";
+  height: 40px;          
 }
