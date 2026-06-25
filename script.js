@@ -66,6 +66,8 @@ let setRecords = [];
 
 let longPressTriggered = false;
 
+
+
 const exerciseSelect = document.getElementById("exerciseSelect");
 let categories =
   JSON.parse(localStorage.getItem("categories")) || [
@@ -202,10 +204,13 @@ countCircle.addEventListener("click", () => {
 
   if (longPressTriggered) {
 
-    longPressTriggered = false;
-    return;
+    setTimeout(() => {
+      longPressTriggered = false;
+    }, 100);
 
+    return;
   }
+
 
 
   count++;
