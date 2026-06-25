@@ -359,6 +359,41 @@ minusRest.addEventListener("click", () => {
 
 
 
+countCircle.addEventListener("touchstart", () => {
+
+  longPressTriggered = false;
+
+  pressTimer = setTimeout(() => {
+
+    longPressTriggered = true;
+
+    if (count > 0) {
+
+      count--;
+      setRecords.pop();
+
+      display.textContent = count;
+    }
+
+  }, 1000);
+
+});
+
+countCircle.addEventListener("touchend", () => {
+
+  clearTimeout(pressTimer);
+
+});
+
+countCircle.addEventListener("touchcancel", () => {
+
+  clearTimeout(pressTimer);
+
+});
+
+
+
+
 
 
 
