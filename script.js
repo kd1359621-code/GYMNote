@@ -61,6 +61,10 @@ const minusRest = document.getElementById("minusRest");
 
 const endRest = document.getElementById("endRest");
 
+const daysSince = document.getElementById("daysSince");
+
+const statusMessage = document.getElementById("statusMessage");
+
 
 let setRecords = [];
 
@@ -629,3 +633,67 @@ addExercise.addEventListener("click", () => {
     newExercise.value = "";
   }
 });
+
+
+
+//日数コメント
+function updateTrainingStatus() {
+
+  if (records.length === 0) {
+
+    daysSince.textContent = "初回";
+    statusMessage.textContent = "START NOW 💪";
+
+    return;
+  }
+
+  const lastRecord =
+    records[records.length - 1];
+
+  const lastDate =
+    new Date(lastRecord.date);
+
+  const today =
+    new Date();
+
+  const diffTime =
+    today - lastDate;
+
+  const diffDays =
+    Math.floor(
+      diffTime / (1000 * 60 * 60 * 24)
+    );
+
+  daysSince.textContent =
+    `${diffDays}日`;
+
+  if (diffDays === 0) {
+
+    statusMessage.textContent =
+      "ON FIRE 🔥";
+
+  } else if (diffDays <= 2) {
+
+    statusMessage.textContent =
+      "GREAT 💪";
+
+  } else if (diffDays <= 4) {
+
+    statusMessage.textContent =
+      "KEEP GOING 👍";
+
+  } else if (diffDays <= 7) {
+
+    statusMessage.textContent =
+      "TIME TO TRAIN 🏋️";
+
+  } else {
+
+    statusMessage.textContent =
+      "LET'S TRAIN 🔥";
+
+  }
+
+}
+
+updateTrainingStatus();

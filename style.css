@@ -505,8 +505,62 @@ select {
 }
 
 
-#countCircle, #count {
-  -webkit-user-select: none;  
-  user-select: none;          
-  -webkit-touch-callout: none; 
+#countCircle,
+#count {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+
+
+
+
+
+
+#trainingStatus {
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: auto;
+
+  padding: 20px;
+
+  border-top: 1px solid #333;
+}
+
+.status-left {
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.status-label {
+
+  font-size: 16px;
+  color: #888;
+}
+
+#statusMessage {
+
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#daysSince {
+
+  font-size: 72px;
+  font-weight: bold;
+
+  color: #00C853;
+
+  text-shadow:
+    0 0 8px rgba(0, 200, 83, 0.5);
+
+  line-height: 1;
+
+  white-space: nowrap;
 }
