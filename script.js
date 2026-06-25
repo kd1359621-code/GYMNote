@@ -64,7 +64,7 @@ const endRest = document.getElementById("endRest");
 
 let setRecords = [];
 
-let longPressTriggered = false;
+
 
 
 
@@ -198,52 +198,9 @@ if (addCategory && newCategory) {
 //セットカウンター
 
 
+let longPressTriggered = false;
 
-countCircle.addEventListener("click", () => {
-
-
-  if (longPressTriggered) {
-
-    setTimeout(() => {
-      longPressTriggered = false;
-    }, 100);
-
-    return;
-  }
-
-
-
-  count++;
-
-  const repsValue =
-    Number(reps.value);
-
-  const weightValue =
-    Number(weight.value);
-
-  setRecords.push({
-
-    reps: repsValue,
-    weight: weightValue
-
-  });
-
-  display.textContent = count;
-
-  // レスト画面へ
-  startRestTimer();
-});
-
-
-
-
-//レスト画面
-let pressTimer;
-
-let restTime = 90;
-let restInterval = null;
-
-countCircle.addEventListener("mousedown", () => {
+countCircle.addEventListener("pointerdown", () => {
 
   longPressTriggered = false;
 
@@ -263,17 +220,42 @@ countCircle.addEventListener("mousedown", () => {
 
 });
 
-countCircle.addEventListener("mouseup", () => {
+countCircle.addEventListener("pointerup", () => {
 
   clearTimeout(pressTimer);
 
+  if (longPressTriggered) {
+
+    longPressTriggered = false;
+    return;
+  }
+
+  count++;
+
+  const repsValue = Number(reps.value);
+  const weightValue = Number(weight.value);
+
+  setRecords.push({
+    reps: repsValue,
+    weight: weightValue
+  });
+
+  display.textContent = count;
+
+  startRestTimer();
+
 });
 
-countCircle.addEventListener("mouseleave", () => {
-
+countCircle.addEventListener("pointerleave", () => {
   clearTimeout(pressTimer);
-
 });
+
+
+//レスト画面
+let pressTimer;
+
+let restTime = 90;
+let restInterval = null;
 
 
 
@@ -361,40 +343,6 @@ minusRest.addEventListener("click", () => {
 
 
 
-
-
-
-countCircle.addEventListener("touchstart", () => {
-
-  longPressTriggered = false;
-
-  pressTimer = setTimeout(() => {
-
-    longPressTriggered = true;
-
-    if (count > 0) {
-
-      count--;
-      setRecords.pop();
-
-      display.textContent = count;
-    }
-
-  }, 1000);
-
-});
-
-countCircle.addEventListener("touchend", () => {
-
-  clearTimeout(pressTimer);
-
-});
-
-countCircle.addEventListener("touchcancel", () => {
-
-  clearTimeout(pressTimer);
-
-});
 
 
 
