@@ -771,7 +771,7 @@ backHomeAI.addEventListener("click", () => {
 
 });
 
-showAdvice.addEventListener("click", () => {
+showAdvice.addEventListener("click", async () => {
 
   adviceArea.classList.remove("hidden");
 
