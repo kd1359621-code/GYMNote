@@ -837,7 +837,7 @@ showAdvice.addEventListener("click", async () => {
   adviceTarget.textContent =
     `${targetWeight}kg × ${targetReps}回`;
 
-  const response = await fetch("/api/advice.js", {
+  const response = await fetch("/api/advice", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
