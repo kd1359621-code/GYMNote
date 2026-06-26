@@ -46,8 +46,8 @@
 
             <div class="bottom-menu">
 
-                <button class="sub-btn">
-                    機能1
+                <button id="goAI" class="sub-btn">
+                    AI
                 </button>
 
                 <button class="sub-btn">
@@ -67,7 +67,7 @@
                     </div>
 
                     <div id="statusMessage">
-                         Lets GO!!!
+                        Lets GO!!!
                     </div>
 
                 </div>
@@ -227,6 +227,52 @@
 
 
         <ul id="ArchiveList"></ul>
+
+
+
+        <!-- AI画面 -->
+        <div id="aiScreen" class="screen hidden">
+
+            <h1>AI ISEEBI 🤖</h1>
+
+            <select id="aiCategorySelect"></select>
+
+            <select id="aiExerciseSelect"></select>
+
+            <button id="showAdvice">
+                アドバイスを見る
+            </button>
+
+            <div id="adviceArea" class="hidden">
+
+                <h2>今回の目標</h2>
+
+                <div id="adviceTarget">
+                    -
+                </div>
+
+                <h2>AIコメント</h2>
+
+                <div id="adviceComment">
+                    -
+                </div>
+
+            </div>
+
+            <button id="backHomeAI">
+                戻る
+            </button>
+
+        </div>
+
+
+
+
+
+
+
+
+
 
     </div>
 

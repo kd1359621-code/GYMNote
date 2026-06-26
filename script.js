@@ -66,8 +66,44 @@ const daysSince = document.getElementById("daysSince");
 const statusMessage = document.getElementById("statusMessage");
 
 
+
+
+
+
+
 let setRecords = [];
 
+
+
+
+
+
+const goAI =
+  document.getElementById("goAI");
+
+const aiScreen =
+  document.getElementById("aiScreen");
+
+const aiCategorySelect =
+  document.getElementById("aiCategorySelect");
+
+const aiExerciseSelect =
+  document.getElementById("aiExerciseSelect");
+
+const showAdvice =
+  document.getElementById("showAdvice");
+
+const adviceArea =
+  document.getElementById("adviceArea");
+
+const adviceTarget =
+  document.getElementById("adviceTarget");
+
+const adviceComment =
+  document.getElementById("adviceComment");
+
+const backHomeAI =
+  document.getElementById("backHomeAI");
 
 
 
@@ -695,5 +731,154 @@ function updateTrainingStatus() {
   }
 
 }
+
+
+goAI.addEventListener("click", () => {
+
+  home.classList.add("hidden");
+  aiScreen.classList.remove("hidden");
+
+  aiCategorySelect.innerHTML = "";
+
+  categories.forEach(category => {
+
+    const option = document.createElement("option");
+
+    option.value = category;
+    option.textContent = category;
+
+    aiCategorySelect.appendChild(option);
+
+  });
+
+
+
+  aiCategorySelect.addEventListener("change", () => {
+
+    updateAIExercises();
+
+  });
+
+  updateAIExercises();
+
+});
+
+backHomeAI.addEventListener("click", () => {
+
+  aiScreen.classList.add("hidden");
+
+  home.classList.remove("hidden");
+
+});
+
+showAdvice.addEventListener("click", () => {
+
+  adviceArea.classList.remove("hidden");
+
+  const category = aiCategorySelect.value;
+  const exercise = aiExerciseSelect.value;
+
+  const history = records.filter(record =>
+    record.category === category &&
+    record.exercise === exercise
+  );
+
+  const latestRecord = history[history.length - 1];
+  if (history.length === 0) {
+
+    adviceTarget.textContent =
+      "初回トレーニング";
+
+    adviceComment.textContent =
+      "まずは無理のない重量で始めて記録を作りましょう！";
+
+    return;
+  }
+
+  // 全セットをまとめる
+  const allSets = [];
+
+  history.forEach(record => {
+    record.sets.forEach(set => {
+      allSets.push(set);
+    });
+  });
+
+  // 最高重量
+  const maxWeight = Math.max(
+    ...allSets.map(set => set.weight)
+  );
+
+  // 最高重量だけ取り出す
+  const maxWeightSets =
+    allSets.filter(set => set.weight === maxWeight);
+
+  // その重量で最高レップ
+  const maxReps = Math.max(
+    ...maxWeightSets.map(set => set.reps)
+  );
+
+  console.table(maxWeightSets);
+
+  let targetWeight = maxWeight;
+  let targetReps = maxReps;
+
+  if (maxReps >= 12) {
+
+    targetWeight += 2.5;
+    targetReps = 8;
+
+  } else {
+
+    targetReps++;
+
+  }
+
+  adviceTarget.textContent =
+    `${targetWeight}kg × ${targetReps}回`;
+
+  const response = await fetch("/api/advice", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      category,
+      exercise,
+      weight: targetWeight,
+      reps: targetReps
+    })
+  });
+
+  const ai = await response.json();
+
+  adviceComment.textContent = ai.advice;
+
+});
+
+function updateAIExercises() {
+
+  aiExerciseSelect.innerHTML = "";
+
+  const category =
+    aiCategorySelect.value;
+
+  exercises[category].forEach(exercise => {
+
+    const option = document.createElement("option");
+
+    option.value = exercise;
+    option.textContent = exercise;
+
+    aiExerciseSelect.appendChild(option);
+
+  });
+
+}
+
+
+
+
+
 
 updateTrainingStatus();
