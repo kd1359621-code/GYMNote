@@ -1,4 +1,8 @@
 export default async function handler(req, res) {
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "POST only" });
+  }
+
   try {
     const body =
       typeof req.body === "string"
@@ -19,8 +23,7 @@ export default async function handler(req, res) {
 最高重量：${weight}kg
 最高レップ：${reps}回
 
-120文字以内で、
-やる気が出る日本語でアドバイスしてください。
+120文字以内で、やる気が出る日本語でアドバイスしてください。
 `;
 
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
@@ -31,16 +34,14 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         model: "gpt-4.1-mini",
-        messages: [
-          { role: "user", content: prompt }
-        ]
+        messages: [{ role: "user", content: prompt }]
       })
     });
 
     const data = await response.json();
 
     return res.status(200).json({
-      advice: data.choices?.[0]?.message?.content || "エラー"
+      advice: data.choices?.[0]?.message?.content
     });
 
   } catch (err) {
