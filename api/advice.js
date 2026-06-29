@@ -1,6 +1,4 @@
-export default async function handler(req, res) {
-  console.log("API実行");
-}
+
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
