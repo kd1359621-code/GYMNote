@@ -837,7 +837,7 @@ showAdvice.addEventListener("click", async () => {
   adviceTarget.textContent =
     `${targetWeight}kg × ${targetReps}回`;
 
-  const response = await fetch("/api/advice", {
+  const response = await fetch("https://gym-note-plum.vercel.app/api/advice", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
