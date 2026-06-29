@@ -1,5 +1,3 @@
-
-
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "POST only" });
@@ -36,17 +34,26 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         model: "gpt-4.1-mini",
-        messages: [{ role: "user", content: prompt }]
+        messages: [
+          {
+            role: "user",
+            content: prompt
+          }
+        ]
       })
     });
 
     const data = await response.json();
 
+    console.log("OpenAI response:", JSON.stringify(data, null, 2));
+
     return res.status(200).json({
-      advice: data.choices?.[0]?.message?.content
+      advice: data.choices?.[0]?.message?.content ?? "adviceが取得できませんでした",
+      raw: data
     });
 
   } catch (err) {
+    console.error(err);
     return res.status(500).json({
       error: err.message
     });
