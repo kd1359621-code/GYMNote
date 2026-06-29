@@ -4,16 +4,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const body =
-      typeof req.body === "string"
-        ? JSON.parse(req.body)
-        : req.body;
-
-    if (!body) {
-      return res.status(400).json({ error: "No body" });
-    }
-
-    const { category, exercise, weight, reps } = body;
+    const { category, exercise, weight, reps } = req.body;
 
     const prompt = `
 あなたは優秀なパーソナルトレーナーです。
@@ -23,39 +14,50 @@ export default async function handler(req, res) {
 最高重量：${weight}kg
 最高レップ：${reps}回
 
-120文字以内で、やる気が出る日本語でアドバイスしてください。
+120文字以内で、
+やる気が出る日本語でアドバイスしてください。
 `;
 
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`
-      },
-      body: JSON.stringify({
-        model: "gpt-4.1-mini",
-        messages: [
-          {
-            role: "user",
-            content: prompt
-          }
-        ]
-      })
-    });
+    const response = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          contents: [
+            {
+              parts: [
+                {
+                  text: prompt,
+                },
+              ],
+            },
+          ],
+        }),
+      }
+    );
 
     const data = await response.json();
 
-    console.log("OpenAI response:", JSON.stringify(data, null, 2));
+    if (!response.ok) {
+      console.error(data);
+      return res.status(response.status).json(data);
+    }
+
+    const advice =
+      data.candidates?.[0]?.content?.parts?.[0]?.text ??
+      "アドバイスを取得できませんでした。";
 
     return res.status(200).json({
-      advice: data.choices?.[0]?.message?.content ?? "adviceが取得できませんでした",
-      raw: data
+      advice,
     });
 
   } catch (err) {
     console.error(err);
     return res.status(500).json({
-      error: err.message
+      error: err.message,
     });
   }
 }
