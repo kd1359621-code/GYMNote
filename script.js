@@ -850,7 +850,11 @@ showAdvice.addEventListener("click", async () => {
     })
   });
 
+  console.log("Status:", response.status);
+
   const ai = await response.json();
+
+  console.log("Response:", ai);
 
   adviceComment.textContent = ai.advice;
 
