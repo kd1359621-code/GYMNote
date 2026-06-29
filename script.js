@@ -853,6 +853,7 @@ showAdvice.addEventListener("click", async () => {
   console.log("Status:", response.status);
 
   const ai = await response.json();
+  console.log(ai.raw);
 
   console.log("Response:", ai);
 
@@ -884,5 +885,5 @@ function updateAIExercises() {
 
 
 
-console.log(ai.raw);
+
 updateTrainingStatus();
