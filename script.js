@@ -884,5 +884,5 @@ function updateAIExercises() {
 
 
 
-
+console.log(ai.raw);
 updateTrainingStatus();
