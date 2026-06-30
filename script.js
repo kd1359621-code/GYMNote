@@ -772,7 +772,6 @@ backHomeAI.addEventListener("click", () => {
 });
 
 showAdvice.addEventListener("click", async () => {
-
   adviceArea.classList.remove("hidden");
 
   const category = aiCategorySelect.value;
@@ -785,38 +784,23 @@ showAdvice.addEventListener("click", async () => {
 
   const latestRecord = history[history.length - 1];
   if (history.length === 0) {
-
-    adviceTarget.textContent =
-      "初回トレーニング";
-
-    adviceComment.textContent =
-      "まずは無理のない重量で始めて記録を作りましょう！";
-
+    adviceTarget.textContent = "初回トレーニング";
+    adviceComment.textContent = "まずは無理のない重量で始めて記録を作りましょう！";
     return;
   }
 
-  // 全セットをまとめる
   const allSets = [];
-
   history.forEach(record => {
     record.sets.forEach(set => {
       allSets.push(set);
     });
   });
 
-  // 最高重量
-  const maxWeight = Math.max(
-    ...allSets.map(set => set.weight)
-  );
+  const maxWeight = Math.max(...allSets.map(set => set.weight));
 
-  // 最高重量だけ取り出す
-  const maxWeightSets =
-    allSets.filter(set => set.weight === maxWeight);
+  const maxWeightSets = allSets.filter(set => set.weight === maxWeight);
 
-  // その重量で最高レップ
-  const maxReps = Math.max(
-    ...maxWeightSets.map(set => set.reps)
-  );
+  const maxReps = Math.max(...maxWeightSets.map(set => set.reps));
 
   console.table(maxWeightSets);
 
@@ -824,41 +808,47 @@ showAdvice.addEventListener("click", async () => {
   let targetReps = maxReps;
 
   if (maxReps >= 12) {
-
     targetWeight += 2.5;
     targetReps = 8;
-
   } else {
-
     targetReps++;
-
   }
 
-  adviceTarget.textContent =
-    `${targetWeight}kg × ${targetReps}回`;
+  adviceTarget.textContent = `${targetWeight}kg × ${targetReps}回`;
 
-  const response = await fetch("https://gym-note-plum.vercel.app/api/advice", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      category,
-      exercise,
-      weight: targetWeight,
-      reps: targetReps
-    })
-  });
+  showAdvice.disabled = true;
+  adviceComment.innerHTML = `
+    <div class="spinner"></div>
+    <p class="loading-text">トレーナーがメニューを分析中...</p>
+  `;
 
-  console.log("Status:", response.status);
+  try {
+    const response = await fetch("https://gym-note-plum.vercel.app/api/advice", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        category,
+        exercise,
+        weight: targetWeight,
+        reps: targetReps
+      })
+    });
 
-  const ai = await response.json();
-  console.log(ai.raw);
+    console.log("Status:", response.status);
 
-  console.log("Response:", ai);
+    const ai = await response.json();
+    console.log("Response:", ai);
 
-  adviceComment.textContent = ai.advice;
+    adviceComment.textContent = ai.advice;
 
+  } catch (err) {
+    console.error(err);
+    adviceComment.textContent = "通信エラーが発生しました。もう一度お試しください。";
+  } finally {
+    showAdvice.disabled = false;
+  }
 });
 
 function updateAIExercises() {

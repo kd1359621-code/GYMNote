@@ -27,7 +27,7 @@ export default async function handler(req, res) {
 最高レップ：${reps}回
 
 120文字以内で、
-やる気が出る日本語でアドバイスしてください。
+やる気が出る男気溢れる日本語でアドバイスしてください。
 `;
 
     const response = await ai.models.generateContent({
