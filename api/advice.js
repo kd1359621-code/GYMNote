@@ -10,8 +10,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    // ⭕️ ここ（関数の内部）で初期化する
-    // こうすることで、リクエストが来た瞬間に確実に環境変数を読み込めます
+    
     const ai = new GoogleGenAI({
       apiKey: process.env.Gemini_API_Key,
     });
@@ -26,6 +25,8 @@ export default async function handler(req, res) {
 最高重量：${weight}kg
 最高レップ：${reps}回
 
+ユーザーは、今からこの「次回の目標」に挑戦しようとしています（まだ達成していません）。
+この目標回数をギリギリでも全うできるように、
 120文字以内で、
 やる気が出る男気溢れる日本語でアドバイスしてください。
 `;

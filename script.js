@@ -819,7 +819,7 @@ showAdvice.addEventListener("click", async () => {
   showAdvice.disabled = true;
   adviceComment.innerHTML = `
     <div class="spinner"></div>
-    <p class="loading-text">トレーナーがメニューを分析中...</p>
+    <p class="loading-text">AIトレーナーがメニューを分析中...</p>
   `;
 
   try {
